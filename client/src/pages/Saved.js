@@ -2,8 +2,8 @@ import React from "react";
 
 function Saved() {
   return (
-    <div>
-      <p>placeholder for saved</p>
+    <div >
+      <p style={{color: "red"}}>placeholder for saved</p>
     </div>
   );
 }
