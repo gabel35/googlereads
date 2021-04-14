@@ -1,9 +1,72 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import API from '../utils/API';
+import { List, ListItem} from '../Components/List';
+import Header from "../Components/Header";
+import Container from "../Components/Container";
 
 function Search() {
+  // Setting our component's initial state
+  const [books, setBooks] = useState([])
+  const [formObject, setFormObject] = useState({})
+  
+  // Load all books and store them with setBooks
+  useEffect(() => {
+    loadBooks()
+  }, [])
+
+  // Loads all books and sets them to books
+  function loadBooks() {
+    API.googleBooks()
+      .then(res => {
+        console.log(res)
+        setBooks(res.data.items[0].volumeInfo)
+      })
+      .catch(err => console.log(err));
+  };
+
+  // Handles updating component state when the user types into the input field
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({...formObject, [name]: value})
+  };
+
+    // When the form is submitted, use the API.saveBook method to save the book data
+  // Then reload books from the database
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (formObject.title && formObject.author) {
+      API.saveBook({
+        image: formObject.imageLinks.thumbnail,
+        title: formObject.title,
+        authors: formObject.authors[0],
+        description: formObject.description,
+        link: formObject.link,
+      })
+        .then(res => loadBooks())
+        .catch(err => console.log(err));
+    }
+  };
+
   return (
     <div>
-      <p>placeholder for search</p>
+      <Header 
+            handleFormSubmit={handleFormSubmit}
+            handleInputChange={handleInputChange} />
+      <Container>
+        {books.length ? (
+          <List>
+            {books.map(book => (
+              <ListItem key={book._id}>
+                <img alt="book cover">{book.imageLinks.thumbnail}</img>
+                <h2>{book.title} by {book.authors[0]}</h2>
+                <p>{book.description}</p>
+              </ListItem>
+            ))}
+          </List>
+        ): (
+          <h3>No Results to Display</h3>
+        )}
+      </Container>
     </div>
   );
 }
