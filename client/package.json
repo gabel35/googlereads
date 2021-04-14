@@ -1,7 +1,9 @@
 {
   "name": "googlereads",
   "version": "0.1.0",
+  "description": "googlereads is an app for searching and saving books",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
