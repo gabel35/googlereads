@@ -58,8 +58,8 @@ function Search() {
       <Container>
         {books.length ? (
           <List>
-            {books.map(book => (
-              <ListItem key={book._id}>
+            {books.map((book, index) => (
+              <ListItem key={index}>
                 <img alt="book cover">{book.image}</img>
                 <h2>{book.title} by {book.authors}</h2>
                 <p>{book.description}</p>

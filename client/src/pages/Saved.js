@@ -37,8 +37,8 @@ function Saved() {
       <Container>
         {savedBooks.length ? (
           <List>
-            {savedBooks.map(book => (
-              <ListItem key={book._id}>
+            {savedBooks.map((book, index) => (
+              <ListItem key={index}>
                 <img alt="book cover">{book.image}</img>
                 <h2>{book.title} by {book.authors}</h2>
                 <p>{book.description}</p>
