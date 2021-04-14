@@ -8,5 +8,24 @@ module.exports = {
           .sort({ date: -1 })
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
-      }
+      },
+    fineOne: function(req,res){
+        db.Book
+        .find({id: req.params.id})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err))
+    },
+    save: function(req,res){
+        db.Book
+        .create(req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err))
+    },
+    remove: function(req,res){
+        db.Book
+        .findById({_id: req.params.id})
+        .sort(dbModel => dbModel.remove())
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err))
+    }
 };
