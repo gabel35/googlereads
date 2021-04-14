@@ -25,7 +25,7 @@ A React-based Google Books Search appthat allows users to view, search, and save
 `npm start` or `node server.js` can be used after installing packages to run the application.
 
 Please follow the following link to the application!
-[Googlereads](https://gabel35.github.io/employpedia/)
+[Googlereads](https://googlereads.herokuapp.com/)
 
 ![Googlereads Screenshot](./public/assets/googlereads_screenshot.PNG)
 
