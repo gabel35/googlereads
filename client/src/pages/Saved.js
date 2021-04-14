@@ -39,8 +39,8 @@ function Saved() {
           <List>
             {savedBooks.map(book => (
               <ListItem key={book._id}>
-                <img alt="book cover">{book.imageLinks.thumbnail}</img>
-                <h2>{book.title} by {book.authors[0]}</h2>
+                <img alt="book cover">{book.image}</img>
+                <h2>{book.title} by {book.authors}</h2>
                 <p>{book.description}</p>
               </ListItem>
             ))}
