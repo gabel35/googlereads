@@ -11,7 +11,7 @@ function Saved() {
     getBooks()
   }, [])
 
-  deleteGoogleBook = currentBook => {
+  function deleteGoogleBook(currentBook) {
     API.deleteBook( currentBook.id )
     .then(res => {
         console.log(res);
@@ -22,7 +22,7 @@ function Saved() {
     })
   }
 
-  getBooks = () => {
+  function getBooks() {
     API.getBooks()
     .then(res => {
       console.log("getBooks", res);

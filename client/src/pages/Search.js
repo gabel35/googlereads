@@ -37,7 +37,7 @@ function Search() {
     if (formObject.title && formObject.author) {
       API.saveBook({
         id: formObject.id,
-        image: formObject.imageLinks.thumbnail,
+        image: formObject.image,
         title: formObject.title,
         authors: formObject.authors[0],
         description: formObject.description,
@@ -60,9 +60,10 @@ function Search() {
           <List>
             {books.map(book => (
               <ListItem key={book._id}>
-                <img alt="book cover">{book.imageLinks.thumbnail}</img>
-                <h2>{book.title} by {book.authors[0]}</h2>
+                <img alt="book cover">{book.image}</img>
+                <h2>{book.title} by {book.authors}</h2>
                 <p>{book.description}</p>
+                <a href={book.link} target="_blank" rel="nopener noreferrer">Go to Book</a>
               </ListItem>
             ))}
           </List>
