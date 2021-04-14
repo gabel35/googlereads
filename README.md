@@ -27,7 +27,7 @@ A React-based Google Books Search appthat allows users to view, search, and save
 Please follow the following link to the application!
 [Googlereads](https://googlereads.herokuapp.com/)
 
-![Googlereads Screenshot](./public/assets/googlereads_screenshot.PNG)
+![Googlereads Screenshot](./client/public/assets/googlereads_screenshot.PNG)
 
 
 ## Credits
