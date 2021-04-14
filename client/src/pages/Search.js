@@ -19,7 +19,7 @@ function Search() {
     API.googleBooks()
       .then(res => {
         console.log(res)
-        setBooks(res.data.items[0].volumeInfo)
+        setBooks(res.data.items)
       })
       .catch(err => console.log(err));
   };
@@ -36,13 +36,14 @@ function Search() {
     event.preventDefault();
     if (formObject.title && formObject.author) {
       API.saveBook({
+        id: formObject.id,
         image: formObject.imageLinks.thumbnail,
         title: formObject.title,
         authors: formObject.authors[0],
         description: formObject.description,
         link: formObject.link,
       })
-        .then(res => loadBooks())
+        .then(res => loadBooks(res))
         .catch(err => console.log(err));
     }
   };
@@ -50,8 +51,10 @@ function Search() {
   return (
     <div>
       <Header 
-            handleFormSubmit={handleFormSubmit}
-            handleInputChange={handleInputChange} />
+        handleFormSubmit={handleFormSubmit}
+        handleInputChange={handleInputChange}
+        name="search"
+      />
       <Container>
         {books.length ? (
           <List>
